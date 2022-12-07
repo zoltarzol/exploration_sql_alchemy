@@ -58,7 +58,7 @@ class Employe(Base):
 
     # Redéfinition de l'affichage de l'objet
     def __repr__(self):
-        return f"({self.id_Employe}) {self.prenom.capitalize()} {self.nom.capitalize()} né(e) le {self.date_naissance.strftime('%d/%m/%Y')} occupe le poste de {self.id_Poste}"
+        return f"(id={self.id_Employe}) {self.prenom.capitalize()} {self.nom.capitalize()} né(e) le {self.date_naissance.strftime('%d/%m/%Y')}"
 
 # String de séparation pour l'affichage des résultats en console
 sep = "\n--------------------------------------------------------------------------\n"
@@ -70,33 +70,29 @@ if(not os.path.isfile(f"{bdd_locale}")):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    p1 = Poste(1, "Secrétaire")
-    p2 = Poste(2, "Directeur")
-    p3 = Poste(3, "Développeur")
-    p4 = Poste(4, "Graphiste")
-    p5 = Poste(5, "Manager")
+    postes = [
+        Poste(1, "Secrétaire"),
+        Poste(2, "Directeur"),
+        Poste(3, "Développeur"),
+        Poste(4, "Graphiste"),
+        Poste(5, "Manager")]
+    employes = [
+        Employe(1, "Charlie", "Chocodan", datetime.date(1980,3,11),1),
+        Employe(2, "Marcel", "Lenoir", datetime.date(1981,3,11), 2),
+        Employe(3, "Nicolas", "Pontier", datetime.date(1982,3,11), 3),
+        Employe(4, "Charlie", "Tournant", datetime.date(1983,3,11), 3),
+        Employe(5, "Guillaume", "Lenoir", datetime.date(1984,3,11), 4),
+        Employe(6, "Lucie", "Tournant", datetime.date(1985,3,11), 4),
+        Employe(7, "Gérard", "Majax", datetime.date(1986,3,11), 5)]
 
-    e1 = Employe(1, "Charlie", "Chocodan", datetime.date(1980,3,11),1)
-    e2 = Employe(2, "Marcel", "Lenoir", datetime.date(1981,3,11), 2)
-    e3 = Employe(3, "Nicolas", "Pontier", datetime.date(1982,3,11), 3)
-    e4 = Employe(4, "Charlie", "Tournant", datetime.date(1983,3,11), 3)
-    e5 = Employe(5, "Guillaume", "Lenoir", datetime.date(1984,3,11), 4)
-    e6 = Employe(6, "Lucie", "Tournant", datetime.date(1985,3,11), 4)
-    e7 = Employe(7, "Gérard", "Majax", datetime.date(1986,3,11), 5)
+    for p in postes:
+        session.add(p)
 
-    session.add(p1)
-    session.add(p2)
-    session.add(p3)
-    session.add(p4)
-    session.add(p5)
-    session.add(e1)
-    session.add(e2)
-    session.add(e3)
-    session.add(e4)
-    session.add(e5)
-    session.add(e6)
-    session.add(e7)
+    for e in employes:
+        session.add(e)
+
     session.commit()
+
 # Si le fichier mc_zonald.sqlite existe, on passe les étapes de création de base et d'initialisation des données
 else:
     engine = create_engine(f"sqlite:///{bdd_locale}", echo=True)
@@ -108,18 +104,19 @@ else:
 results = session.query(Employe).all()
 print (sep, "Liste des employés\n", "Total:", len(results), results, sep)
 
-# SELECT * FROM table idem WHERE column = "abc"
+# SELECT * FROM table WHERE column = "abc"
 results = session.query(Employe).filter(Employe.prenom == "Charlie").all()
 print(sep, "Liste des employés avec prenom = \"Charlie\"\n", "Total:", len(results), results, sep)
 
-# SELECT * FROM table idem WHERE date_column = datetime.date(year,month,day)
+# SELECT * FROM table WHERE date_column = datetime.date(year,month,day)
 results = session.query(Employe).filter(Employe.date_naissance > datetime.date(1982,1,1)).all()
 print(sep, "Liste des employé(e)(s) nés après le 1er janvier 1982\n", "Total:", len(results), results, sep)
 
-# SELECT * FROM table idem WHERE date_column = datetime.date(year,month,day)
+# SELECT * FROM table WHERE date_column = datetime.date(year,month,day)
 results = session.query(Employe).filter(Employe.prenom.like("%a%")).all()
 print(sep, "Liste des employé(e)(s) dont le prénom contient un \'a\'\n", "Total:", len(results), results, sep)
 
-# Requête des employés + affichage console
-results = session.query(Employe).filter(Employe.prenom.in_(["Gérard", "Lucie"])).all()
-print(sep, "Liste des employé(e)(s) dont le prénom est soit Gérard, soit Lucie\n", "Total:", len(results), results, sep)
+# Jointure de tables
+results = session.query(Employe, Poste.nom).filter(Employe.id_Poste == Poste.id_Poste).all()
+for r in results:
+    print(r[0], "occupe le poste de", r[1])
