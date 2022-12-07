@@ -1,8 +1,5 @@
-# Brief - Projet "restaurant_BI"
-## Réalisé par Elias et ZoLTaR
+# Brief - Projet "restaurant_BI", par Elias et ZoLTaR
 ## Technologies utilisées : Python, Django, SQLite, SQLAlchemy
-<br>
-
 ### Installation des prérequis pour lancer l'application Web
 
 ```sh
@@ -13,14 +10,13 @@ conda install django
 conda install python-dotenv
 ```
 
-### Ressources complémentaires
+## Ressources complémentaires
 
 - Diagramme UML EER (schéma logique Entités-Relations étendu)
-<br>
 
 ![alt text](restaurant_BI_EER.png "EER Model")
 
-- Création du schéma de données (compatible MySQL Server)
+- Script de génération du schéma de données (compatible MySQL Server)
 
 ```sql
 -- Création du schéma FastFood et des tables associées
