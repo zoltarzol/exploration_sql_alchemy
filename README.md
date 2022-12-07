@@ -2,4 +2,9 @@
 ## Réalisé par Elias et Cédric
 ### Technologies utilisées : Python, Django, SQLite, SQLAlchemy
 
-Informations à compléter...
+#### Installation des prérequis
+
+    conda create -n restaurant_BI
+    conda activate restaurant_BI
+    conda install sqlalchemy
+    conda install django

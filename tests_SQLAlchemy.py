@@ -11,7 +11,7 @@ import datetime
 import os
 
 # Fichier SQLite de test
-
+bdd_locale = "tests_SQLAlchemy.sqlite"
 
 # Creation d'une nouvelle classe de base SQLAlchemy.
 Base = declarative_base()
@@ -64,8 +64,8 @@ class Employe(Base):
 sep = "\n--------------------------------------------------------------------------\n"
 
 # Si le fichier mydb.sqlite n'existe pas dans le répertoire courant, la base est crée et initialisée
-if(not os.path.isfile("exploration.sqlite")):
-    engine = create_engine("sqlite:///exploration.sqlite", echo=True)
+if(not os.path.isfile(f"{bdd_locale}")):
+    engine = create_engine(f"sqlite:///{bdd_locale}", echo=True)
     Base.metadata.create_all(bind=engine)
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -99,7 +99,7 @@ if(not os.path.isfile("exploration.sqlite")):
     session.commit()
 # Si le fichier mc_zonald.sqlite existe, on passe les étapes de création de base et d'initialisation des données
 else:
-    engine = create_engine("sqlite:///exploration.sqlite", echo=True)
+    engine = create_engine(f"sqlite:///{bdd_locale}", echo=True)
     Base.metadata.create_all(bind=engine)
     Session = sessionmaker(bind=engine)
     session = Session()
