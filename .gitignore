@@ -1,5 +1,6 @@
 # AJOUTS MANUELS
 tests_SQLAlchemy.sqlite
+restaurant_BI_EER.mwb.bak
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,python
