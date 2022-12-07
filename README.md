@@ -8,3 +8,5 @@
     conda activate restaurant_BI
     conda install sqlalchemy
     conda install django
+    conda install python-dotenv
+    
