@@ -1,1 +1,3 @@
-# exploration_sql_alchemy
+# Brief Restaurant_BI
+## Elias et Cédric
+
