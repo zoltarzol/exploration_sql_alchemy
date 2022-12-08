@@ -63,7 +63,7 @@ class Employe(Base):
 # String de séparation pour l'affichage des résultats en console
 sep = "\n--------------------------------------------------------------------------\n"
 
-# Si le fichier mydb.sqlite n'existe pas dans le répertoire courant, la base est crée et initialisée
+# Si le fichier {bdd_locale} n'existe pas dans le répertoire courant, la base est crée et initialisée
 if(not os.path.isfile(f"{bdd_locale}")):
     engine = create_engine(f"sqlite:///{bdd_locale}", echo=True)
     Base.metadata.create_all(bind=engine)
