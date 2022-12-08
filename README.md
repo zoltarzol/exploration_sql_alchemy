@@ -12,7 +12,7 @@ conda install python-dotenv
 
 ### Ressources complémentaires
 
-- Diagramme UML EER (schéma logique Entités-Relations étendu)
+- Diagramme UML EER (schéma logique Entités-Relations étendu) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema.sql">create_schema.sql</a>
 
 ![alt text](restaurant_BI_EER.png "EER Model")
 
