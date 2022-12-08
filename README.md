@@ -12,11 +12,11 @@ conda install python-dotenv
 
 ### Ressources complémentaires
 
-- Diagramme UML EER (schéma logique Entités-Relations étendu) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema.sql">create_schema.sql</a>
+- Diagramme UML EER (schéma logique Entités-Relations étendu)
 
 ![alt text](restaurant_BI_EER.png "EER Model")
 
-- Script de génération du schéma de données (compatible MySQL Server)
+- Script de génération du schéma de données (compatible MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema.sql">create_schema.sql</a>
 
 ```sql
 -- Création du schéma FastFood et des tables associées
