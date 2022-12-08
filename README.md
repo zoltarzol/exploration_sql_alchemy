@@ -345,7 +345,7 @@ if(not os.path.isfile(f"{bdd_locale}")):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-# Insertion de quelques données de test
+    # Insertion de quelques données de test
     postes = [
         Poste(1, "Secrétaire"),
         Poste(2, "Directeur"),
