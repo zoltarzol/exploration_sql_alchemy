@@ -36,7 +36,7 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 
 ![alt text](restaurant_BI_EER.png "EER Model")
 
-- Script de génération du schéma de données (compatible MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema_mysql.sql">create_schema_mysql.sql</a> (aperçu ci-dessous)
+- Script SQL pour la génération du schéma de données (version MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema_mysql.sql">create_schema_mysql.sql</a><br>
 
 ```
 CREATE SCHEMA IF NOT EXISTS `FastFood` ;
@@ -48,37 +48,12 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Poste` (
 ENGINE = InnoDB;
 
 [...]
-
-CREATE TABLE IF NOT EXISTS `FastFood`.`TicketCaisse` (
-  `id_TicketCaisse` INT NOT NULL,
-  `date_heure` DATETIME NOT NULL,
-  `moyen_paiement` VARCHAR(45) NOT NULL,
-  `id_vendeur` INT NOT NULL,
-  PRIMARY KEY (`id_TicketCaisse`),
-  INDEX `fk_id_vendeur_idx` (`id_vendeur` ASC) VISIBLE,
-  CONSTRAINT `fk_id_vendeur`
-    FOREIGN KEY (`id_vendeur`)
-    REFERENCES `FastFood`.`Employe` (`id_Employe`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 ```
 
-- Premiers tests avec SQLAlchemy => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/tests_SQLAlchemy.py">tests_SQLAlchemy.py</a> (aperçu ci-dessous)
+- Premiers tests avec SQLAlchemy => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/tests_SQLAlchemy.py">tests_SQLAlchemy.py</a><br>
+(script executable séparément, affichage en console)
 
 ```py
-# Conventions de nommage :
-# - classes et tables : CamelCase
-# - clés primaires ou secondaires : id_{Table}
-# - noms des attributs de classes et des colonnes : snake_case
-
-# Import des classes et fonctions de SQLAlchemy, ainsi que de datetime et os
-from sqlalchemy import create_engine, ForeignKey, Column, String, Integer, Date
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-import datetime
-import os
-
 [...]
 
 # Jointure de tables
