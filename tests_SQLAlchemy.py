@@ -20,6 +20,21 @@ Base = declarative_base()
 # Dans cette exploration, 2 classes (et donc 2 tables) sont créées, avec une liaison Clé étrangère
 # >> un Employe occupe un Poste, la clé étrangère est nommée id_Poste dans les deux tables Employe et Poste
 
+# Création de la classe Pays
+class Pays(Base):
+    # Déclaration du nom de la table
+    __tablename__ = "Pays"
+
+    # Déclaration de la clé primaire id_Employe
+    id_Pays = Column("id_Pays", Integer, primary_key=True)
+    # Déclaration des autres colonnes
+    nom = Column("nom", String)
+
+    # Initialisateur
+    def __init__(self, id_Pays, nom):
+        self.id_Pays = id_Pays
+        self.nom = nom
+
 # Création de la classe Poste
 class Poste(Base):
     # Déclaration du nom de la table
@@ -33,7 +48,7 @@ class Poste(Base):
     # Initialisateur
     def __init__(self, id_Poste, nom):
         self.id_Poste = id_Poste
-        self.nom = nom    
+        self.nom = nom
 
 # Création de la classe Employe
 class Employe(Base):
@@ -93,7 +108,7 @@ if(not os.path.isfile(f"{bdd_locale}")):
 
     session.commit()
 
-# Si le fichier mc_zonald.sqlite existe, on passe les étapes de création de base et d'initialisation des données
+# Si le fichier {bdd_locale} existe, on passe les étapes de création de base et d'initialisation des données
 else:
     engine = create_engine(f"sqlite:///{bdd_locale}", echo=True)
     Base.metadata.create_all(bind=engine)
