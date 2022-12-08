@@ -17,7 +17,7 @@ conda install faker
 
 ![alt text](restaurant_BI_EER.png "EER Model")
 
-- Script de génération du schéma de données (compatible MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema.sql">create_schema.sql</a>
+- Script de génération du schéma de données (compatible MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema_mysql.sql">create_schema_mysql.sql</a>
 
 ```sql
 -- Création du schéma FastFood et des tables associées
