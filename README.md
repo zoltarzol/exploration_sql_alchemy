@@ -1,17 +1,28 @@
-# <span style="color: #339933;">DEVIA P3 / FastFood</span>
-### <span style="color: #339933;">par Elias et ZoLTaR</span>
-## <span style="color: #dd7700;">Bibliothèques utilisées : Django, SQLAlchemy, Faker</span>
-### <span style="color: #5599ff;">1. Creation de l'environnement et des dépendances</span>
+# DEVIA P3 - Projet FastFood
+## Bibliothèques utilisées : Django, SQLAlchemy, Faker
+### Réalisé par Elias et ZoLTaR
+<br>
+
+---
+#### <b>Avant toute chose, pour utiliser ce projet, veuillez le cloner dans un dossier local de votre choix</b>
+---
+<br>
+
+### 1. Creation de l'environnement et des dépendances
 
 - Option 1 : génération automatique de l'environnement
 ```sh
+# Assurez-vous d'être à la racine du projet, au même niveau que manage.py
+
 conda deactivate
-conda create --name restaurant_BI --file req_conda.txt
+conda create --name restaurant_BI --file conda_requirements
 conda activate restaurant_BI
 ```
 
 - Option 2 : Génération manuelle de l'environnement minicondas
 ```sh
+# Assurez-vous d'être à la racine du projet, au même niveau que manage.py
+
 conda deactivate
 conda create -n restaurant_BI
 conda activate restaurant_BI
@@ -19,9 +30,10 @@ conda install sqlalchemy
 conda install django
 conda install python-dotenv
 conda install faker
+conda install unidecode
 ```
 
-### <span style="color: #5599ff;">2. Création du fichier .env avec la clé secrète Django</span>
+### 2. Création du fichier .env avec la clé secrète Django
 
 ```sh
 # Assurez-vous d'être à la racine du projet, au même niveau que manage.py
@@ -30,7 +42,7 @@ echo -n "SECRET_KEY=" > .env
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' >> .env
 ```
 
-### <span style="color: #5599ff;">Annexes : ressources complémentaires</span>
+### Annexes : ressources complémentaires
 
 - Diagramme UML EER (schéma logique Entités-Relations étendu)
 
@@ -39,6 +51,8 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 - Script SQL pour la génération du schéma de données (version MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema_mysql.sql">create_schema_mysql.sql</a><br>
 
 ```
+[...aperçu...]
+
 CREATE SCHEMA IF NOT EXISTS `FastFood` ;
 
 CREATE TABLE IF NOT EXISTS `FastFood`.`Poste` (
@@ -46,15 +60,13 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Poste` (
   `nom` VARCHAR(10) NOT NULL,
   PRIMARY KEY (`id_Poste`))
 ENGINE = InnoDB;
-
-[...]
 ```
 
 - Premiers tests avec SQLAlchemy => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/tests_SQLAlchemy.py">tests_SQLAlchemy.py</a><br>
-(script executable séparément, affichage en console)
+(script exécutable séparément, affichage des résultats en console)
 
 ```py
-[...]
+[...aperçu...]
 
 # Jointure de tables
 results = session.query(Employe, Poste.nom).filter(Employe.id_Poste == Poste.id_Poste).all()
