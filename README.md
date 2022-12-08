@@ -8,7 +8,7 @@
 ---
 <br>
 
-### 1. Creation de l'environnement et des dépendances
+### 1. Creation de l'environnement et installation des dépendances
 
 - Option 1 : génération automatique de l'environnement
 ```sh
@@ -50,8 +50,10 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 
 - Script SQL pour la génération du schéma de données (version MySQL Server) => <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/create_schema_mysql.sql">create_schema_mysql.sql</a><br>
 
-```
-[...aperçu...]
+```sql
+/*########################
+# ...aperçu du fichier...#
+########################*/
 
 CREATE SCHEMA IF NOT EXISTS `FastFood` ;
 
@@ -66,7 +68,9 @@ ENGINE = InnoDB;
 (script exécutable séparément, affichage des résultats en console)
 
 ```py
-[...aperçu...]
+##########################
+# ...aperçu du fichier...#
+##########################
 
 # Jointure de tables
 results = session.query(Employe, Poste.nom).filter(Employe.id_Poste == Poste.id_Poste).all()
