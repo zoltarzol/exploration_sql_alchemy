@@ -1,16 +1,16 @@
 # <span style="color: #339933;">DEVIA P3 / FastFood</span>
 ### <span style="color: #339933;">par Elias et ZoLTaR</span>
 ## <span style="color: #dd7700;">Bibliothèques utilisées : Django, SQLAlchemy, Faker</span>
-### <span style="color: #5599ff;">1. Installation des prérequis pour lancer l'application Web</span>
+### <span style="color: #5599ff;">1. Creation de l'environnement et des dépendances</span>
 
-- Avec minicondas - creation d'environnement
+- Option 1 : génération automatique de l'environnement
 ```sh
 conda deactivate
 conda create --name restaurant_BI --file req_conda.txt
 conda activate restaurant_BI
 ```
 
-- Avec minicondas - liste de commandes
+- Option 2 : Génération manuelle de l'environnement minicondas
 ```sh
 conda deactivate
 conda create -n restaurant_BI
@@ -19,6 +19,15 @@ conda install sqlalchemy
 conda install django
 conda install python-dotenv
 conda install faker
+```
+
+### <span style="color: #5599ff;">2. Création du fichier .env avec la clé secrète Django</span>
+
+```sh
+# Assurez-vous d'être à la racine du projet, au même niveau que manage.py
+
+echo -n "SECRET_KEY=" > .env
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())' >> .env
 ```
 
 ### <span style="color: #5599ff;">Annexes : ressources complémentaires</span>
