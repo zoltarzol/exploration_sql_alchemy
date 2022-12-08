@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`TicketCaisse` (
 ENGINE = InnoDB;
 ```
 
-- Premiers tests avec SQLAlchemy => fichier disponible à la racine du projet : <b>tests_SQLAlchemy.py</b>
+- Premiers tests avec SQLAlchemy => fichier disponible à la racine du projet : <a href="https://github.com/zoltarzol/restaurant_BI/blob/dev_cedric/tests_SQLAlchemy.py">tests_SQLAlchemy.py</a>
 
 ```py
 # Conventions de nommage :
