@@ -85,6 +85,7 @@ if(not os.path.isfile(f"{bdd_locale}")):
     Session = sessionmaker(bind=engine)
     session = Session()
 
+# Insertion de quelques données de test
     postes = [
         Poste(1, "Secrétaire"),
         Poste(2, "Directeur"),
@@ -115,23 +116,39 @@ else:
     Session = sessionmaker(bind=engine)
     session = Session()
 
+# Quelques requêtes pour illustrer le fonctionnement de SQLAlchemy
+
 # SELECT * FROM Employe
 results = session.query(Employe).all()
-print (sep, "Liste des employés\n", "Total:", len(results), results, sep)
+print (sep, "Liste des employés\n", "LIGNES:", len(results), "\n")
+for r in results:
+    print(r)
+print(sep)
 
-# SELECT * FROM table WHERE column = "abc"
+# SELECT * FROM table WHERE string_column = "abc"
 results = session.query(Employe).filter(Employe.prenom == "Charlie").all()
-print(sep, "Liste des employés avec prenom = \"Charlie\"\n", "Total:", len(results), results, sep)
+print(sep, "Liste des employés avec prenom = \"Charlie\"\n", "LIGNES:", len(results), "\n")
+for r in results:
+    print(r)
+print(sep)
 
 # SELECT * FROM table WHERE date_column = datetime.date(year,month,day)
 results = session.query(Employe).filter(Employe.date_naissance > datetime.date(1982,1,1)).all()
-print(sep, "Liste des employé(e)(s) nés après le 1er janvier 1982\n", "Total:", len(results), results, sep)
+print(sep, "Liste des employé(e)(s) nés après le 1er janvier 1982\n", "LIGNES:", len(results), "\n")
+for r in results:
+    print(r)
+print(sep)
 
-# SELECT * FROM table WHERE date_column = datetime.date(year,month,day)
-results = session.query(Employe).filter(Employe.prenom.like("%a%")).all()
-print(sep, "Liste des employé(e)(s) dont le prénom contient un \'a\'\n", "Total:", len(results), results, sep)
+# SELECT * FROM table WHERE string_column like %{string}%
+results = session.query(Employe).filter(Employe.prenom.like("%la%")).all()
+print(sep, "Liste des employé(e)(s) dont le prénom contient \'la\'\n", "LIGNES:", len(results), "\n")
+for r in results:
+    print(r)
+print(sep)
 
 # Jointure de tables
 results = session.query(Employe, Poste.nom).filter(Employe.id_Poste == Poste.id_Poste).all()
+print(sep, "Jointure pour afficher le poste des employés\n", "LIGNES:", len(results), "\n")
 for r in results:
     print(r[0], "occupe le poste de", r[1])
+print(sep)
