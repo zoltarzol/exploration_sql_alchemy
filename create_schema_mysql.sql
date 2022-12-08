@@ -2,13 +2,14 @@
 -- Script pour MySQL Server
 -- DEVIA P3 : Brief FastFood
 -- Groupe : Elias et ZoLTaR
--- Date de création : 08/12/2022
+-- Date de modification : 8/12/2022
 
 CREATE SCHEMA IF NOT EXISTS `FastFood` ;
 
 CREATE TABLE IF NOT EXISTS `FastFood`.`Poste` (
   `id_Poste` INT NOT NULL,
   `nom` VARCHAR(10) NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Poste`))
 ENGINE = InnoDB;
 
@@ -16,12 +17,14 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Carte` (
   `id_Carte` INT NOT NULL,
   `nom` VARCHAR(45) NOT NULL,
   `id_Restaurant` VARCHAR(45) NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Carte`))
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `FastFood`.`Pays` (
   `id_Pays` INT NOT NULL,
   `nom` VARCHAR(45) NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Pays`))
 ENGINE = InnoDB;
 
@@ -29,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`CodePostal` (
   `id_CodePostal` INT NOT NULL,
   `code` VARCHAR(10) NOT NULL,
   `id_Pays` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_CodePostal`),
   INDEX `fk_Pays_idx` (`id_Pays` ASC) VISIBLE,
   CONSTRAINT `fk_Pays`
@@ -42,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Ville` (
   `id_Ville` INT NOT NULL,
   `nom` VARCHAR(45) NOT NULL,
   `id_CodePostal` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Ville`),
   INDEX `fk_CodePostal_idx` (`id_CodePostal` ASC) VISIBLE,
   CONSTRAINT `fk_CodePostal`
@@ -56,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Adresse` (
   `numero_adresse` VARCHAR(45) NULL,
   `voie_adresse` VARCHAR(45) NULL,
   `id_Ville` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Adresse`),
   INDEX `fk_Ville_idx` (`id_Ville` ASC) VISIBLE,
   CONSTRAINT `fk_Ville`
@@ -69,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Ingredient` (
   `id_Ingredient` INT NOT NULL,
   `nom` VARCHAR(45) NOT NULL,
   `prix_achat` FLOAT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Ingredient`))
 ENGINE = InnoDB;
 
@@ -78,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Item` (
   `type` VARCHAR(10) NOT NULL,
   `taille_boisson` VARCHAR(10) NULL,
   `prix_vente` FLOAT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Item`))
 ENGINE = InnoDB;
 
@@ -87,6 +95,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Recette` (
   `quantité` INT NOT NULL,
   `id_Ingredient` INT NOT NULL,
   `id_Item` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Recette`),
   INDEX `fk_Ingredient_idx` (`id_Ingredient` ASC) VISIBLE,
   INDEX `fk_Item_idx` (`id_Item` ASC) VISIBLE,
@@ -108,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Menu` (
   `id_Item_plat` INT NOT NULL,
   `id_Item_boisson` INT NOT NULL,
   `id_Item_dessert` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Menu`),
   INDEX `fk_item_plat_idx` (`id_Item_plat` ASC) VISIBLE,
   INDEX `fk_item_boisson_idx` (`id_Item_boisson` ASC) VISIBLE,
@@ -139,6 +149,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Restaurant` (
   `id_Carte` INT NOT NULL,
   `id_Employe_directeur` INT NULL,
   `id_Adresse` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Restaurant`),
   INDEX `fk_Carte_idx` (`id_Carte` ASC) VISIBLE,
   INDEX `fk_Employe_directeur_idx` (`id_Employe_directeur` ASC) VISIBLE,
@@ -166,6 +177,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Employe` (
   `id_Employe_responsable` INT NULL,
   `id_Restaurant` INT NULL,
   `id_Adresse_restaurant` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Employe`),
   INDEX `fk_Employe_responsable_idx` (`id_Employe_responsable` ASC) VISIBLE,
   INDEX `fk_Poste_idx` (`id_Poste` ASC) VISIBLE,
@@ -209,6 +221,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`Salaire` (
   `date_debut` DATETIME NOT NULL,
   `date_fin` DATETIME NULL,
   `id_Employe` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_Salaire`),
   INDEX `fk_id_Employe_idx` (`id_Employe` ASC) VISIBLE,
   CONSTRAINT `fk_id_Employe`
@@ -223,6 +236,7 @@ CREATE TABLE IF NOT EXISTS `FastFood`.`TicketCaisse` (
   `date_heure` DATETIME NOT NULL,
   `moyen_paiement` VARCHAR(45) NOT NULL,
   `id_vendeur` INT NOT NULL,
+  `date_extraction` DATETIME NOT NULL,
   PRIMARY KEY (`id_TicketCaisse`),
   INDEX `fk_id_vendeur_idx` (`id_vendeur` ASC) VISIBLE,
   CONSTRAINT `fk_id_vendeur`
