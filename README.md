@@ -1,5 +1,5 @@
 # DEVIA P3 / FastFood - par Elias et ZoLTaR
-## Technologies utilisées : Python, Django, SQLite, SQLAlchemy
+## Bibliothèques utilisées : Django, SQLAlchemy, Faker
 ### Installation des prérequis pour lancer l'application Web
 
 ```sh
