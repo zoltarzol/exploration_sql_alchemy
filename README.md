@@ -31,6 +31,7 @@ conda install django
 conda install python-dotenv
 conda install faker
 conda install unidecode
+conda install pandas
 ```
 
 ### 2. Création du fichier .env avec la clé secrète Django

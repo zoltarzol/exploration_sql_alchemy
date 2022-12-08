@@ -26,9 +26,9 @@ class Pays(Base):
     __tablename__ = "Pays"
 
     # Déclaration de la clé primaire id_Employe
-    id_Pays = Column("id_Pays", Integer, primary_key=True)
+    id_Pays = Column(Integer, primary_key=True)
     # Déclaration des autres colonnes
-    nom = Column("nom", String)
+    nom = Column(String)
 
     # Initialisateur
     def __init__(self, id_Pays, nom):
@@ -41,9 +41,9 @@ class Poste(Base):
     __tablename__ = "Poste"
 
     # Déclaration de la clé primaire id_Employe
-    id_Poste = Column("id_Poste", Integer, primary_key=True)
+    id_Poste = Column(Integer, primary_key=True)
     # Déclaration des autres colonnes
-    nom = Column("nom", String)
+    nom = Column(String)
 
     # Initialisateur
     def __init__(self, id_Poste, nom):
@@ -55,11 +55,11 @@ class Employe(Base):
     __tablename__ = "Employe"
 
     # Déclaration de la clé primaire id_Employe
-    id_Employe = Column("id_Employe", Integer, primary_key=True)
+    id_Employe = Column(Integer, primary_key=True)
     # Déclaration des autres colonnes
-    prenom = Column("prenom", String)
-    nom = Column("nom", String)
-    date_naissance = Column("date_naissance", Date)
+    prenom = Column(String)
+    nom = Column(String)
+    date_naissance = Column(Date)
     # Déclaration de la clé étrangère Employe.id_Poste relié à la clé primaire Poste.id_Poste
     id_Poste = Column(String, ForeignKey("Poste.id_Poste"))
 
