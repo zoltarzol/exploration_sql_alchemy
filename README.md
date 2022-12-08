@@ -2,6 +2,14 @@
 ## Bibliothèques utilisées : Django, SQLAlchemy, Faker
 ### Installation des prérequis pour lancer l'application Web
 
+> Avec minicondas - creation d'environnement
+```sh
+conda deactivate
+conda create --name restaurant_BI --file requirements.txt
+conda activate restaurant_BI
+```
+
+> Avec minicondas - liste de commandes
 ```sh
 conda create -n restaurant_BI
 conda activate restaurant_BI
@@ -9,7 +17,6 @@ conda install sqlalchemy
 conda install django
 conda install python-dotenv
 conda install faker
-```
 
 ### Ressources complémentaires
 
