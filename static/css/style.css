@@ -1,0 +1,15 @@
+.bg {
+    width: fit-content;
+    height: fit-content;
+    background: url('/static/images/bg.jpg') ;
+    background-size: 70% ;
+    background-repeat: repeat;
+    background-position: center;
+    background-position-y: -15px;
+}
+
+.test {
+    width: 100%;
+    height: 56.9em;
+    overflow:auto ;
+}

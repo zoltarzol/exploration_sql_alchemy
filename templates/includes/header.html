@@ -5,34 +5,43 @@
 {% load static %}
 
 <div class="container-fluid text-bg-dark">
-  <header class="d-flex justify-content-center py-3 mb-4 text-bg-dark">
+  <header class="d-flex justify-content-center py-3 text-bg-dark">
     <!-- <img class="d-flex align-items-center text-dark text-decoration-none"
       src="{% static 'header/DEV_IA_Brief_Airbnb_data_analyzer.png' %}" width=400 height="47"> -->
-    <ul class="nav ms-5 me-5">
-      <li class="fs-5 ms-1">
+    <ul class="nav me-5 pe-5">
+      <li class="fs-5">
         <a href="/" class="nav-link
                 {% if request.path == url_home %}
                 text-secondary">
           {% else %}
           text-white">
           {% endif %}
-          Home
+          Accueil
         </a>
       </li>
-      <li class="fs-5 ms-1">
+      <li class="fs-5">
         <a href="/" class="nav-link
           {% if request.path == url_country_details %}
             text-secondary">
           {% else %}
             text-white">
           {% endif %}
-          Something else
+          Requêtes SQL
+        </a>
+      </li>
+      <li class="fs-5">
+        <a href="/" class="nav-link
+          {% if request.path == url_country_details %}
+            text-secondary">
+          {% else %}
+            text-white">
+          {% endif %}
+          Mission CRUD
         </a>
       </li>
     </ul>
-      <button type="button" class="btn btn-outline-dark me-2 bg-dark text-light fs-5">Login</button>
-      <button type="button" class="btn btn-warning text-dark fs-5">Sign-up</button>
-
+      <button type="button" class="btn btn-outline-dark ms-5 ps-5 me-2 bg-dark text-light">Connexion</button>
+      <button type="button" class="btn btn-warning text-dark">Inscription</button>
 </div>
 
 </header>
