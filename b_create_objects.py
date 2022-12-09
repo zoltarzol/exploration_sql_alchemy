@@ -1,16 +1,13 @@
-from datetime import datetime
 from a_create_classes import *
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from datetime import datetime
 
 # Fichier SQLite de test
 bdd_locale = "fastfood.sqlite"
 
 # Initialisation de session SQLAlchemy
-Base = declarative_base()
 engine = create_engine(f"sqlite:///{bdd_locale}", echo=True)
-Base.metadata.create_all(bind=engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
@@ -19,7 +16,7 @@ pays = [Pays(1, 'France', datetime.now()),Pays(2, 'Allemagne', datetime.now()),P
 
 # Création des codes postaux
 code_postaux = [
-    CodePostal(1, '75000', 1, datetime.now() ),
+    CodePostal(1, '75000', 1, datetime.now()),
     CodePostal(2, '76000', 1, datetime.now()),
     CodePostal(3, '77000', 1, datetime.now()),
     CodePostal(4, '10117', 2, datetime.now()),
@@ -99,7 +96,7 @@ adresses = [
     Adresse(54, '6', 'Rue', 9, datetime.now())] 
 
 session.add_all(pays)
-session.add_all(code_postaux)
-session.add_all(villes)
-session.add_all(adresses)
+# session.add_all(code_postaux)
+# session.add_all(villes)
+# session.add_all(adresses)
 session.commit()
