@@ -75,10 +75,3 @@ def delete_user(name):
 
 vider_table(bdd_locale, "pays")
 creer_pays("Russie")
-
-CREATE TABLE IF NOT EXISTS `FastFood`.`Pays` (
-  `id_Pays` INT NOT NULL,
-  `nom` VARCHAR(45) NOT NULL,
-  `date_extraction` DATETIME NOT NULL,
-  PRIMARY KEY (`id_Pays`))
-ENGINE = InnoDB
